@@ -17,6 +17,7 @@ export class UserController {
   // ✅ Public route: Register user
   @Post('register')
   register(@Body() dto: CreateUserDto) {
+    console.log('🔥 Register DTO received:', dto); // 👈 add this
     return this.userService.register(dto);
   }
 

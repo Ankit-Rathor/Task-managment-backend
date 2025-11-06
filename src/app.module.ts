@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaService } from './prisma/prisma.service';
 import { TaskModule } from './task/task.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { JwtMiddleware } from './common/middleware/jwt.middleware';
 
 
 @Module({
@@ -16,7 +17,7 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware)
+      .apply(JwtMiddleware ,LoggerMiddleware)
       .forRoutes('*'); // ✅ Apply for all routes
   }
 }
